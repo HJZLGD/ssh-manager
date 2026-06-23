@@ -27,3 +27,13 @@ tar -xzf ssh-manager-linux-x64.tar.gz
 cd ssh-manager && ./start.sh
 
 # 3. 打开浏览器访问提示地址
+```bash
+
+
+
+## 📄 许可证
+
+本项目采用 MIT 许可证的Node.js二进制文件
+
+本发行包包含 Node.js 运行时（https://nodejs.org），
+Node.js 采用 MIT 许可证，版权归 OpenJS Foundation 所有。
