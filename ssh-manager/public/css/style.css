@@ -1,0 +1,118 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow: hidden; font-family: 'Courier New', monospace; background: #1e1e1e; color: #d4d4d4; font-size: 14px; }
+
+.app { display: flex; flex-direction: column; height: 100vh; }
+
+/* 顶部栏 */
+.header { display: flex; align-items: center; padding: 4px 8px; background: #252526; border-bottom: 1px solid #3c3c3c; font-size: 13px; }
+.header .menu-btn { cursor: pointer; padding: 4px 8px; background: #3c3c3c; border-radius: 4px; margin-right: 8px; user-select: none; }
+.header .menu-btn:active { background: #094771; }
+.header .path { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+/* 终端标签栏 */
+.terminal-bar { display: flex; background: #1e1e1e; border-bottom: 1px solid #3c3c3c; overflow-x: auto; white-space: nowrap; min-height: 32px; }
+.terminal-bar::-webkit-scrollbar { height: 3px; }
+.terminal-bar::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
+.term-tab { display: inline-flex; align-items: center; padding: 6px 12px; cursor: pointer; background: #2d2d2d; border-right: 1px solid #3c3c3c; font-size: 12px; user-select: none; }
+.term-tab.active { background: #1e1e1e; border-bottom: 2px solid #007acc; }
+.term-tab .close-btn { margin-left: 8px; color: #888; cursor: pointer; font-size: 14px; }
+.term-tab .close-btn:hover { color: #fff; }
+#addTerminalBtn { background: transparent; border: none; color: #888; padding: 6px 12px; cursor: pointer; font-size: 16px; user-select: none; }
+
+/* 双栏面板 */
+.panels { flex: 1; display: flex; overflow: hidden; }
+.panel { flex: 1; display: flex; flex-direction: column; overflow: hidden; border-right: 1px solid #3c3c3c; }
+.panel:last-child { border-right: none; }
+.panel-header { padding: 4px 8px; background: #252526; font-size: 12px; border-bottom: 1px solid #3c3c3c; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.panel-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; }
+.panel-body::-webkit-scrollbar { width: 4px; }
+.panel-body::-webkit-scrollbar-thumb { background: #555; border-radius: 2px; }
+
+/* 文件项 */
+.file-item { display: flex; align-items: center; padding: 6px 8px; cursor: pointer; user-select: none; border-bottom: 1px solid #2a2a2a; transition: background 0.1s; min-height: 36px; }
+.file-item:active { background: #094771; }
+.file-item.selected { background: #094771; }
+.file-item.highlight { background: #264f78; border-left: 3px solid #4fc3f7; }
+.file-item .icon { margin-right: 8px; font-size: 14px; }
+.file-item .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-item .size { color: #888; font-size: 11px; margin-left: 8px; }
+
+/* 底部工具栏 */
+.toolbar { display: flex; background: #252526; border-top: 1px solid #3c3c3c; padding: 4px; }
+.tool-btn { flex: 1; text-align: center; padding: 8px 4px; cursor: pointer; font-size: 16px; border-radius: 4px; margin: 0 2px; background: #3c3c3c; user-select: none; }
+.tool-btn:active { background: #094771; }
+
+/* 操作浮层 */
+.action-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; justify-content: center; align-items: flex-end; }
+.action-overlay.active { display: flex; }
+.action-sheet { background: #252526; border-radius: 16px 16px 0 0; padding: 16px; width: 100%; max-width: 400px; }
+.action-sheet .title { text-align: center; font-size: 12px; color: #888; margin-bottom: 12px; }
+.action-row { display: flex; gap: 8px; }
+.action-row button { flex: 1; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; background: #3c3c3c; color: #d4d4d4; }
+.action-row button:active { background: #094771; }
+.action-row .danger { color: #f48771; }
+
+/* 弹窗 */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; }
+.modal-overlay.active { display: flex; }
+.modal { background: #252526; border-radius: 12px; padding: 16px; max-width: 90%; width: 320px; max-height: 80vh; display: flex; flex-direction: column; }
+.modal h3 { margin-bottom: 12px; font-size: 14px; text-align: center; }
+.find-input, .create-input, .setting-input { width: 100%; padding: 10px; background: #3c3c3c; border: 1px solid #555; color: #d4d4d4; border-radius: 8px; font-size: 16px; margin-bottom: 8px; }
+.find-results { flex: 1; overflow-y: auto; max-height: 300px; }
+.find-item { padding: 8px; cursor: pointer; border-bottom: 1px solid #3c3c3c; font-size: 12px; }
+.find-item:active { background: #094771; }
+.find-item .fname { color: #4fc3f7; }
+.find-item .fdir { color: #888; font-size: 11px; }
+.create-options { display: flex; gap: 8px; margin-bottom: 8px; }
+.create-options button { flex: 1; padding: 10px; border: 1px solid #555; background: #3c3c3c; color: #d4d4d4; border-radius: 8px; cursor: pointer; text-align: center; }
+.create-options button.active { background: #094771; border-color: #007acc; }
+.modal-buttons { display: flex; gap: 8px; margin-top: 8px; }
+.modal-buttons button { flex: 1; padding: 10px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; }
+.btn-cancel { background: #555; color: #d4d4d4; }
+.btn-confirm { background: #007acc; color: #fff; }
+
+/* 终端容器 */
+.terminal-wrapper { flex: 1; display: flex; flex-direction: column; }
+
+/* 最小化终端标签 */
+.term-tab.minimized {
+    opacity: 0.5;
+    border-bottom: 2px solid #555;
+}
+.term-tab.minimized:hover {
+    opacity: 0.8;
+}
+
+/* 终端容器内关闭按钮 */
+.term-close-btn {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: 10;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background: rgba(60,60,60,0.8);
+    color: #888;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+    transition: background 0.15s, color 0.15s;
+}
+.term-close-btn:active {
+    background: rgba(200,50,50,0.9);
+    color: #fff;
+}
+
+/* 标签栏不再显示关闭按钮 */
+.term-tab .close-btn {
+    display: none;
+}
+
+/* Toast 动画 */
+@keyframes toastIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
