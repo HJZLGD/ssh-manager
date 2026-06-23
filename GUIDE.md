@@ -8,7 +8,7 @@ ssh-manager/
 ├── README.md ← 快速上手指南
 ├── GUIDE.md ← 本文件（进阶使用）
 ├── node/ ← 自带 Node.js 运行时（不用管）
-├── node_modules/ ← 项目依赖（不用管）
+├── vendor/xterm/ ←界面渲染层 (自带)
 ├── public/ ← 前端页面（可修改）
 ├── server/ ← 后端服务（可修改）
 ├── server.js ← 服务入口
