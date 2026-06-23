@@ -1,6 +1,6 @@
 {
   "name": "ssh-manager",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": true,
   "scripts": {
     "start": "node server.js",
@@ -8,9 +8,5 @@
     "cert": "cd cert && mkcert -install && mkcert localhost 127.0.0.1",
     "logs": "tail -f logs/audit-*.log | jq ."
   },
-  "dependencies": {
-    "express": "^4.18.2",
-    "node-pty": "^1.0.0",
-    "ws": "^8.16.0"
-  }
+  "dependencies": {}
 }
