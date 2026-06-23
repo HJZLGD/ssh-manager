@@ -1,0 +1,53 @@
+ssh-manager/
+│
+├── start.sh                          ← 🚀 一键启动脚本
+│                                      （自动检测端口、打印访问地址）
+│
+├── node/                             ← 🆕 Node.js 运行时（自带）
+│   └── bin/
+│       └── node                      ← Node.js 二进制（~140MB）
+│                                      （解压即用，不依赖系统环境）
+│
+├── node_modules/                     ← 🆕 项目依赖（打包时预装）
+│   ├── express/                      ← HTTP 服务框架
+│   ├── ws/                           ← WebSocket 通信库
+│   ├── node-pty/                     ← 终端模拟库
+│   └── ...                           ← 其他依赖
+│
+├── public/                           ← 🌐 前端静态资源
+│   ├── index.html                    ← 页面入口（xterm 加载顺序已修正）
+│   ├── css/
+│   │   └── style.css                 ← 样式文件
+│   └── js/
+│       ├── utils.js                  ← 工具函数 + Mock 数据
+│       ├── state.js                  ← 全局状态管理
+│       ├── history.js                ← 导航历史记录
+│       ├── websocket.js              ← WebSocket + HMAC 认证
+│       ├── message-handler.js        ← 消息路由分发
+│       ├── panels.js                 ← 双栏文件面板
+│       ├── terminal.js               ← 终端管理器
+│       ├── dialogs.js                ← 弹窗管理
+│       └── app.js                    ← 应用入口
+│
+├── server/                           ← 🖥️ 后端服务
+│   ├── config.js                     ← 配置 + 受保护路径
+│   ├── logger.js                     ← 审计日志
+│   ├── security.js                   ← 安全工具
+│   ├── state.js                      ← 后端全局状态
+│   ├── utils.js                      ← 工具函数（spawnSafe）
+│   ├── auth.js                       ← HMAC 挑战-响应认证
+│   ├── file-handler.js               ← 文件操作（~310行）
+│   ├── terminal-handler.js           ← 终端操作（~300行）
+│   └── ws-handler.js                 ← WebSocket + 消息路由
+│
+├── server.js                         ← 📌 服务入口（~55行）
+│                                      （HTTP/HTTPS自动切换、WebSocket初始化）
+│
+├── package.json                      ← 📦 依赖清单
+│                                      （express, ws, node-pty）
+│
+├── cert/                             ← 🔐 证书目录
+│                                      （有证书自动启用HTTPS，没有则用HTTP）
+│
+└── logs/                             ← 📋 日志目录
+                                       （审计日志自动写入）
