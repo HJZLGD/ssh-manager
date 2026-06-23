@@ -8,26 +8,25 @@ ssh-manager/
 │       └── node                      ← Node.js 二进制（~140MB）
 │                                      （解压即用，不依赖系统环境）
 │
-├── node_modules/                     ← 🆕 项目依赖（打包时预装）
-│   ├── express/                      ← HTTP 服务框架
-│   ├── ws/                           ← WebSocket 通信库
-│   ├── node-pty/                     ← 终端模拟库
-│   └── ...                           ← 其他依赖
-│
 ├── public/                           ← 🌐 前端静态资源
-│   ├── index.html                    ← 页面入口（xterm 加载顺序已修正）
+│   ├── index.html                    ← 页面入口（xterm 加载路径已本地化）
 │   ├── css/
 │   │   └── style.css                 ← 样式文件
-│   └── js/
-│       ├── utils.js                  ← 工具函数 + Mock 数据
-│       ├── state.js                  ← 全局状态管理
-│       ├── history.js                ← 导航历史记录
-│       ├── websocket.js              ← WebSocket + HMAC 认证
-│       ├── message-handler.js        ← 消息路由分发
-│       ├── panels.js                 ← 双栏文件面板
-│       ├── terminal.js               ← 终端管理器
-│       ├── dialogs.js                ← 弹窗管理
-│       └── app.js                    ← 应用入口
+│   ├── js/
+│   │   ├── utils.js                  ← 工具函数 + Mock 数据
+│   │   ├── state.js                  ← 全局状态管理
+│   │   ├── history.js                ← 导航历史记录
+│   │   ├── websocket.js              ← WebSocket + HMAC 认证
+│   │   ├── message-handler.js        ← 消息路由分发
+│   │   ├── panels.js                 ← 双栏文件面板
+│   │   ├── terminal.js               ← 终端管理器
+│   │   ├── dialogs.js                ← 弹窗管理
+│   │   └── app.js                    ← 应用入口
+│   └── vendor/                       ← 🧩 第三方依赖（本地化，不依赖 CDN）
+│       └── xterm/
+│           ├── xterm.js              ← Xterm.js 核心库（~477KB）
+│           ├── xterm.css             ← Xterm.js 样式
+│           └── xterm-addon-fit.min.js← Xterm.js 自适应插件
 │
 ├── server/                           ← 🖥️ 后端服务
 │   ├── config.js                     ← 配置 + 受保护路径
@@ -44,7 +43,10 @@ ssh-manager/
 │                                      （HTTP/HTTPS自动切换、WebSocket初始化）
 │
 ├── package.json                      ← 📦 依赖清单
-│                                      （express, ws, node-pty）
+│                                      （仅用于记录依赖信息，运行时不依赖）
+│
+├── LICENSES.md                       ← 📄 第三方开源组件声明
+│                                      （xterm.js、node-pty、Node.js 等）
 │
 ├── cert/                             ← 🔐 证书目录
 │                                      （有证书自动启用HTTPS，没有则用HTTP）
