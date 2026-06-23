@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>远程操作面板</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5/css/xterm.min.css">
+    <link rel="stylesheet" href="vendor/xterm/xterm.css">
 </head>
 <body>
     <div class="app">
@@ -56,9 +56,9 @@
     <!-- 设置弹窗 -->
     <div class="modal-overlay" id="settingsModal"></div>
 
-    <!-- 第三方库优先加载（供后面项目 JS 依赖） -->
-    <script src="https://cdn.jsdelivr.net/npm/xterm@5/lib/xterm.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/xterm@5/addons/fit/fit.min.js"></script>
+    <!-- 第三方库本地引入 -->
+    <script src="vendor/xterm/xterm.js"></script>
+    <script src="vendor/xterm/xterm-addon-fit.min.js"></script>
 
     <!-- 项目 JS -->
     <script src="js/utils.js"></script>
